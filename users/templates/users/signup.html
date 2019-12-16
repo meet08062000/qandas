@@ -1,0 +1,39 @@
+{% extends "blog/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <main role="main" class="container">
+        <div class="row">
+            <div class="col-md-8 mt-4">
+                <div class="content-section">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <fieldset class="form-group">
+                            <legend class="border-bottom mb-4">Join Today</legend>
+                            {{ form|crispy }}
+                        </fieldset>
+                        <div class="form-group">
+                            <button class="btn btn-outline-info btn-set-primary" id="ebe" type="submit">Sign Up</button>
+                        </div>
+                    </form>
+                    <div class="border-top pt-3">
+                        <small class="text-muted">
+                            Already Have An Account? <a class="ml-2" href="{%url 'login'%}">Sign In</a>
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script type="text/javascript">
+        $(document).ready(function(){
+        $("#ebe").click(function(){
+            var num1=Math.floor(Math.random() * 10);
+            var num2=Math.floor(Math.random() * 10);
+            var sum=num1+num2;
+            var sum1 = prompt("Are you a robot: What is "+num1 + "+" + num2 );
+            if (sum1!= sum)
+                arguements.callee();
+        }); 
+    });
+    </script>
+{% endblock content %}
