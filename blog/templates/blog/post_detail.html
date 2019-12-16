@@ -1,0 +1,35 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <main role="main" class="container">
+        <div class="row">
+            <div class="col-md-8 mt-4">
+                <div class="content-section">
+                    {% if post.published_date %}
+                        <div class="date">
+                            {{ post.published_date }}
+                        </div>
+                    {% endif %}
+                    {% if user.is_authenticated and user == post.author%}
+                      <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><span class="fas fa-pen"></span></a>
+                    {% endif %}
+                    {% if user.is_authenticated and user == post.author %}
+                      <a class="btn btn-default" href="{% url 'post_delete' pk=post.pk %}"><span class="fas fa-trash"></span></a>
+                    {% endif %}
+                    <h1>{{ post.question }}</h1>
+
+                    <hr>
+                    <a class="btn btn-outline-info btn-set-primary" href="{% url 'add_comment_to_post' pk=post.pk %}">Add comment</a>
+                    {% for comment in post.comments.all %}
+                        <div class="comment border-top pt-3">
+                            <p>{{ comment.text|linebreaks }}</p>
+                        </div>
+                        <hr>
+                    {% empty %}
+                        <p>No comments here yet :(</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}
