@@ -14,7 +14,9 @@
 					            </div>
 					            <h3><a href="{% url 'post_detail' pk=post.pk %}" class="article-title">{{ post.question }}</a></h3>
 					         
-		                        <a href="{% url 'post_detail' pk=post.pk %}" class="article-title">Comments: {{ post.comments.count }}</a>
+		                        <a href="{% url 'post_detail' pk=post.pk %}" class="article-title">Comments: {{ post.comments.count }}</a><!-- 
+
+		                        <a> Likes :{{post.likes}}</a> -->
 					        </div>
 				    	</div>
 					</div>

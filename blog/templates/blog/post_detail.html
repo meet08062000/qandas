@@ -10,13 +10,37 @@
                             {{ post.published_date }}
                         </div>
                     {% endif %}
+
                     {% if user.is_authenticated and user == post.author%}
                       <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><span class="fas fa-pen"></span></a>
                     {% endif %}
+
                     {% if user.is_authenticated and user == post.author %}
                       <a class="btn btn-default" href="{% url 'post_delete' pk=post.pk %}"><span class="fas fa-trash"></span></a>
                     {% endif %}
+
                     <h1>{{ post.question }}</h1>
+
+                    <input type="button" id="like-button" value="Like" post_id="{{ post.pk }}"><a id="likes">{{post.likes}}</a>
+
+                    <script>
+                        $("#like-button").on('click', function () {
+                            var post_id = $(this).attr("post_id");
+                          
+                            $.ajax({
+                                url: '/ajax/change_status/',
+                                data: {
+                                    'pk': post_id
+                                },
+                                dataType: 'json',
+                                success: function (post) {
+                                    var num_of_likes = post.get_likes;
+                                    document.getElementById("likes").innerHTML=num_of_likes;
+                                }
+                            });
+
+                        });
+                    </script>
 
                     <hr>
                     <a class="btn btn-outline-info btn-set-primary" href="{% url 'add_comment_to_post' pk=post.pk %}">Add comment</a>

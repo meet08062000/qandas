@@ -9,5 +9,7 @@ urlpatterns = [
     path('post/<int:pk>/delete/', views.post_delete, name='post_delete'),
     path('post/list/',views.post_list,name='post_list'),
     path('post/<int:pk>/comment/', views.add_comment_to_post, name='add_comment_to_post'),
+    path('ajax/change_status/', views.ajax_change_status, name='ajax_change_status'),
+    
 
 ]
