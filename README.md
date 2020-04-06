@@ -36,3 +36,10 @@ Login
 
 SignUp
 ![text](https://github.com/rajatshenoy56/qandas/blob/master/media/profile_pics/iii.png)
+
+
+
+
+Like Functionality
+Answers
+![text](https://github.com/rajatshenoy56/qandas/blob/master/media/profile_pics/Screenshot_2020-04-06_18-39-34.png)
